@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Project1.Models.Yazar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create"class="btn btn-outline-warning">
+        Create New <span class="material-symbols-outlined">
+            add_circle
+        </span>
+    </a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyad)
+            </td>
+            <td>
+                    <a asp-action="Edit"class="btn btn-success" asp-route-id="@item.Yazarno">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </a> |
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Yazarno">
+                        <span class="material-symbols-outlined">
+                            info
+                        </span>
+                    </a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Yazarno">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

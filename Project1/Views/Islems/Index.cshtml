@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Project1.Models.Islem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (TempData["KeyMessage"] != null)
+{
+    <h3>@TempData["KeyMessage"]</h3>
+}
+<p>
+    <a asp-action="Create"class="btn btn-outline-warning">
+        Create New <span class="material-symbols-outlined">
+            add_circle
+        </span>
+    </a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Atarih)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vtarih)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapnoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgrnoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vtarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KitapnoNavigation.Kitapno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrnoNavigation.Ogrno)
+            </td>
+            <td>
+                    <a asp-action="Edit"class="btn btn-success" asp-route-id="@item.Islemno">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </a> |
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Islemno">
+                        <span class="material-symbols-outlined">
+                            info
+                        </span>
+                    </a> |
+                    <a asp-action="Delete" class="btn btn-danger"asp-route-id="@item.Islemno">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

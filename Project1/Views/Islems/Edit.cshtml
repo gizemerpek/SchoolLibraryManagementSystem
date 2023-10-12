@@ -1,0 +1,49 @@
+﻿@model Project1.Models.Islem
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Islem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Islemno" />
+            <div class="form-group">
+                <label asp-for="Ogrno" class="control-label"></label>
+                <select asp-for="Ogrno" class="form-control" asp-items="ViewBag.Ogrno"></select>
+                <span asp-validation-for="Ogrno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kitapno" class="control-label"></label>
+                <select asp-for="Kitapno" class="form-control" asp-items="ViewBag.Kitapno"></select>
+                <span asp-validation-for="Kitapno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Atarih" class="control-label"></label>
+                <input asp-for="Atarih" class="form-control" />
+                <span asp-validation-for="Atarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vtarih" class="control-label"></label>
+                <input asp-for="Vtarih" class="form-control" />
+                <span asp-validation-for="Vtarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
